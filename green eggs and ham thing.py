@@ -1,3 +1,20 @@
+import re
+my_file = open("Green Eggs and Ham.txt", "r")
+filereader = my_file.read()
+my_file.close()
+
+i_regex = re.compile(r"i( |-)")
+
+print("Errors fixed: " + str(len(i_regex.findall(filereader))))
+
+filereader = i_regex.sub(r"I\1", filereader)
+
+with open("newtext.txt", "w") as file:
+    file.write(filereader)
+
+
+# PAST ATTEMPTS FOR POSTERITY DOWN BELOW:
+
 # f = open("text.txt", "rb")
 # s = f.readlines()
 # f.close()
@@ -88,18 +105,3 @@
 #
 # with open("newtext.txt", "w") as file:
 #     file.write(filereader)
-
-
-import re
-my_file = open("Green Eggs and Ham.txt", "r")
-filereader = my_file.read()
-my_file.close()
-
-i_regex = re.compile(r"i( |-)")
-
-print("Errors fixed: " + str(len(i_regex.findall(filereader))))
-
-filereader = i_regex.sub(r"I\1", filereader)
-
-with open("newtext.txt", "w") as file:
-    file.write(filereader)
